@@ -6,6 +6,7 @@
 
  * What is the largest prime factor of the number 600851475143 ?
  *
+ * function fmod used instead because of how windows handles long which is a 4bit number in VS
  */
 
 int isPrime(long x) {
@@ -24,14 +25,14 @@ int isPrime(long x) {
 }
 
 int main() {
-	long number = 600851475143;
+	long double number = 600851475143;
 	
 	long i = sqrt(number);
 	if(i % 2 == 0)
 		i++;
 		
 	for(; i > 0; i -= 2) {
-		if(number % i == 0 && isPrime(i)) {
+		if(fmod(number, i) == 0 && isPrime(i)) {
 			printf("%ld", i);
 			break;
 		}
